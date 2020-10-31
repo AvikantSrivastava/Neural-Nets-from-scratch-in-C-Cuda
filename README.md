@@ -1,13 +1,31 @@
 # Neural Nets from scratch in C++/Cuda
 
+## Compile and Run
+
+### Using NVCC [Cuda]
+```bash
+❯ nvcc test.cu -o testfile          
+❯ ./testfile              
+```
+
+### Using G++ [C++]
+```bash
+❯ g++ test.cpp -o testfile          
+❯ ./testfile              
+```
+
 ## Checkpoints
 
 ### Getting started
 - [x] Basic Overview of Build/Compile and Make methods in C++/Cuda
-- [ ] File handling in C++ and writing custom I/O functions
+- [x] File handling in C++ and writing custom I/O functions
+- [ ] Add makefile
 - [ ] Structuring C++ projects
 - [ ] Object oriented design of neural nets
 
 ### Feature implementation
-- [ ] Read_csv implementation in C++
+- [x] ___[Working]___ Read_csv implementation in C++
+
+### Misc
+- [x] Add Iris Dataset 
 
