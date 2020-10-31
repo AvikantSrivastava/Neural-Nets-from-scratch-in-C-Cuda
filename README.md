@@ -3,6 +3,7 @@
 ## Checkpoints
 
 ### Getting started
-- [ ] Basic Overview of Build/Compile and Make methods in C++/Cuda
+- [x] Basic Overview of Build/Compile and Make methods in C++/Cuda
 - [ ] File handling in C++ and writing custom I/O functions
+- [ ] Structuring C++ projects
 - [ ] Object oriented design of neural nets
