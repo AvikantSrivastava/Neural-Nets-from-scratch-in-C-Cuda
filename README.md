@@ -7,3 +7,7 @@
 - [ ] File handling in C++ and writing custom I/O functions
 - [ ] Structuring C++ projects
 - [ ] Object oriented design of neural nets
+
+### Feature implementation
+- [ ] Read_csv implementation in C++
+
