@@ -4,13 +4,13 @@
 
 ### Using NVCC [Cuda]
 ```bash
-❯ nvcc test.cu -o testfile          
+❯ nvcc -std=c++17 test.cu -o testfile          
 ❯ ./testfile              
 ```
 
 ### Using G++ [C++]
 ```bash
-❯ g++ test.cpp -o testfile          
+❯ g++ -std=c++17 test.cpp -o testfile          
 ❯ ./testfile              
 ```
 
@@ -28,4 +28,5 @@
 
 ### Misc
 - [x] Add Iris Dataset 
+- [x] Use C++17 as default compilation mode
 
