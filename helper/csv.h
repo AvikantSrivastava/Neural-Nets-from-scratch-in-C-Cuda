@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <variant>
 #include <cassert>
 #include <vector>
 #include <algorithm>
@@ -13,6 +12,8 @@ public:
     int number_of_Rows;
     std::string filename;
     std::vector<std::string> labels;
+
+    std::vector<std::pair<float, std::vector<float>>> DATA;
 
     int encoder(std::string label)
     {
@@ -44,10 +45,11 @@ public:
         return !s.empty() && it == s.end();
     }
 
-    std::variant<float, std::string> Line_to_Row(std::string s)
+    std::pair<float, std::vector<float>> Line_to_Row(std::string s)
 
     {
-        std::variant<float, std::string> result;
+        std::pair<int, std::vector<float>> result;
+        std::vector<float> column_values;
 
         {
             std::string delimiter = ",";
@@ -57,13 +59,16 @@ public:
             while ((pos = s.find(delimiter)) != std::string::npos)
             {
                 token = s.substr(0, pos);
-                std::cout << token << std::endl;
-                // result.push_back(is_number(token) ? (float)token : token);
+                // std::cout << token << std::endl;
+                column_values.push_back(std::stof(token));
 
                 s.erase(0, pos + delimiter.length());
             }
-            std::cout << "Encoded is : " << encoder(s) << std::endl;
-            // result.push_back(6.66);
+            // std::cout << "Encoded is : " << encoder(s) << std::endl;
+
+            result.first = encoder(s);
+            result.second = column_values;
+
             return result;
         }
 
@@ -90,12 +95,9 @@ public:
         this->number_of_Columns = get_number_of_Columns(title_line);
         // std ::cout << "Number of columns eare : " << this->number_of_Columns << std::endl;
 
-        std::vector<std::variant<float, std::string>> DATA;
         while (getline(datafile, line))
         {
-
-            // std::cout << title_line << std::endl;
-            DATA.push_back(Line_to_Row(line));
+            this->DATA.push_back(Line_to_Row(line));
         }
     }
 };
