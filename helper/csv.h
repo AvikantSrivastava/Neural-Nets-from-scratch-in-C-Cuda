@@ -4,6 +4,7 @@
 #include <variant>
 #include <cassert>
 #include <vector>
+#include <algorithm>
 
 class csv
 {
@@ -11,6 +12,18 @@ public:
     int number_of_Columns;
     int number_of_Rows;
     std::string filename;
+    std::vector<std::string> labels;
+
+    int encoder(std::string label)
+    {
+        int encoded_value;
+        std::vector<std::string>::iterator position = std::find(labels.begin(), labels.end(), label);
+
+        if (position == labels.end())
+            labels.push_back(label);
+        encoded_value = (position - labels.begin());
+        return encoded_value + 1;
+    }
 
     int get_number_of_Columns(std::string line)
     {
@@ -49,7 +62,7 @@ public:
 
                 s.erase(0, pos + delimiter.length());
             }
-            std::cout << s << std::endl;
+            std::cout << "Encoded is : " << encoder(s) << std::endl;
             // result.push_back(6.66);
             return result;
         }
