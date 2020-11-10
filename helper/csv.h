@@ -20,6 +20,12 @@ public:
         int encoded_value;
         std::vector<std::string>::iterator position = std::find(labels.begin(), labels.end(), label);
 
+        if (labels.empty())
+        {
+            labels.push_back(label);
+            return 1;
+        }
+
         if (position == labels.end())
             labels.push_back(label);
         encoded_value = (position - labels.begin());
