@@ -24,9 +24,13 @@
 - [ ] Object oriented design of neural nets
 
 ### Feature implementation
-- [x] ___[Working]___ Read_csv implementation in C++
+- [x] Read_csv implementation in C++
+- [ ] Dense Layer Implementation
+- [ ] Activation Function Implementation
+- [ ] Write Train Function
 
 ### Misc
 - [x] Add Iris Dataset 
 - [x] Use C++17 as default compilation mode
+- [ ] Add comments in `csv.h`
 
