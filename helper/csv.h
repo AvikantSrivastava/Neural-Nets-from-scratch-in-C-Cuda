@@ -7,13 +7,11 @@
 
 class csv
 {
-public:
+private:
     int number_of_Columns;
-    int number_of_Rows;
+    int number_of_Rows = 0;
     std::string filename;
     std::vector<std::string> labels;
-
-    std::vector<std::pair<float, std::vector<float>>> DATA;
 
     int encoder(std::string label)
     {
@@ -81,6 +79,9 @@ public:
         return result;
     }
 
+public:
+    std::vector<std::pair<float, std::vector<float>>> DATA;
+
     csv(std::string filename)
     {
         this->filename = filename;
@@ -104,6 +105,32 @@ public:
         while (getline(datafile, line))
         {
             this->DATA.push_back(Line_to_Row(line));
+            this->number_of_Rows++;
+        }
+    }
+
+    void get_details()
+    {
+
+        std::cout << "Number of Cols are " << this->number_of_Columns << std::endl;
+        std::cout << "Number of Rows are " << this->number_of_Rows << std::endl;
+
+        std::cout << "LABEL"
+                  << "\t"
+                  << "Values" << std::endl;
+        for (auto it = this->DATA.begin(); it != this->DATA.end(); ++it)
+        {
+            auto row = *it;
+            auto label = row.first;
+            auto values = row.second;
+            std::cout << label << "\t";
+
+            for (auto col = values.begin(); col != values.end(); ++col)
+            {
+                std::cout << *col << "\t";
+            }
+
+            std::cout << std::endl;
         }
     }
 };
