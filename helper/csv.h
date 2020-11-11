@@ -16,7 +16,6 @@ private:
     int encoder(std::string label)
     {
         int encoded_value;
-        std::vector<std::string>::iterator position = std::find(labels.begin(), labels.end(), label);
 
         if (labels.empty())
         {
@@ -24,8 +23,13 @@ private:
             return 1;
         }
 
+        std::vector<std::string>::iterator position = std::find(labels.begin(), labels.end(), label);
+
         if (position == labels.end())
+        {
             labels.push_back(label);
+            return encoder(label);
+        }
         encoded_value = (position - labels.begin());
         return encoded_value + 1;
     }
